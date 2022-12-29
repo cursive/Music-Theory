@@ -1,0 +1,147 @@
+* {
+
+    font-family: 'Helvetica', 'Arial', sans-serif;
+}
+
+// body {
+//     background-color: #222222;
+// }
+
+// h2,
+// li {
+//     color: #eeeeee;
+// }
+
+
+.blocks {
+    display: flex;
+    flex-direction: column;
+    width: 2000px;
+
+    .block {
+        display: flex;
+        flex-direction: column;
+
+        .row {
+
+            padding-bottom: 10px;
+
+            .container {
+                display: flex;
+                gap: 10px;
+
+                .title {}
+
+                .notes {
+                    display: flex;
+                    gap: 10px;
+                }
+            }
+        }
+    }
+}
+
+.note {
+    width: 45px;
+    height: 45px;
+    box-sizing: border-box;
+    background-color: #F2F2F2;
+    border-radius: 5px;
+    color: #555555;
+
+
+
+    &.legal {
+        border: 2px solid #14BF96;
+    }
+
+    &.black {
+        background: #4D4D4D;
+        color: #aaaaaa;
+    }
+
+    &.hideblack {
+        background-color: #F2F2F2;
+    }
+
+    &.active {
+        background: #14BF96;
+        color: #555555;
+
+        .letter {
+            &.invisible {
+                opacity: 1;
+            }
+        }
+    }
+
+    &:hover {
+        box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.42);
+    }
+
+    .letter {
+        font-size: 10px;
+        margin: 5px;
+
+
+        &.invisible {
+            opacity: 0;
+        }
+    }
+
+
+
+
+}
+
+h2 {
+    padding: 0;
+    margin: 0;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
+.variants {
+    display: flex;
+    gap: 10px;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 10px;
+
+    li {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+
+        &.active {
+            color: #14BF96;
+        }
+    }
+}
+
+.info {
+
+    width: 86px;
+    height: 45px;
+    background-color: #ffcccc;
+    border-radius: 5px;
+    //overflow: hidden;
+
+    h3 {
+        font-size: 12px;
+        font-weight: normal;
+        margin: 5px;
+    }
+
+    p {
+        font-size: 12px;
+        display: none;
+    }
+}
+
+
+.compact {
+    h2 {
+        display: none;
+    }
+}

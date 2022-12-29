@@ -1,0 +1,103 @@
+* {
+  font-family: "Helvetica", "Arial", sans-serif;
+}
+
+.blocks {
+  display: flex;
+  flex-direction: column;
+  width: 2000px;
+}
+.blocks .block {
+  display: flex;
+  flex-direction: column;
+}
+.blocks .block .row {
+  padding-bottom: 10px;
+}
+.blocks .block .row .container {
+  display: flex;
+  gap: 10px;
+}
+.blocks .block .row .container .notes {
+  display: flex;
+  gap: 10px;
+}
+
+.note {
+  width: 45px;
+  height: 45px;
+  box-sizing: border-box;
+  background-color: #F2F2F2;
+  border-radius: 5px;
+  color: #555555;
+}
+.note.legal {
+  border: 2px solid #14BF96;
+}
+.note.black {
+  background: #4D4D4D;
+  color: #aaaaaa;
+}
+.note.hideblack {
+  background-color: #F2F2F2;
+}
+.note.active {
+  background: #14BF96;
+  color: #555555;
+}
+.note.active .letter.invisible {
+  opacity: 1;
+}
+.note:hover {
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.42);
+}
+.note .letter {
+  font-size: 10px;
+  margin: 5px;
+}
+.note .letter.invisible {
+  opacity: 0;
+}
+
+h2 {
+  padding: 0;
+  margin: 0;
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+
+.variants {
+  display: flex;
+  gap: 10px;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 10px;
+}
+.variants li {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.variants li.active {
+  color: #14BF96;
+}
+
+.info {
+  width: 86px;
+  height: 45px;
+  background-color: #ffcccc;
+  border-radius: 5px;
+}
+.info h3 {
+  font-size: 12px;
+  font-weight: normal;
+  margin: 5px;
+}
+.info p {
+  font-size: 12px;
+  display: none;
+}
+
+.compact h2 {
+  display: none;
+}/*# sourceMappingURL=style.css.map */

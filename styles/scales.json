@@ -1,0 +1,56 @@
+{
+    "scales": [
+        {
+            "key": "C",
+            "name": "Major (Ionian)",
+            "scalenotes": [
+                0,
+                2,
+                4,
+                5,
+                7,
+                9,
+                11
+            ]
+        },
+        {
+            "key": "C",
+            "name": "Mixylodian",
+            "scalenotes": [
+                0,
+                2,
+                4,
+                5,
+                7,
+                9,
+                10
+            ]
+        },
+        {
+            "key": "C",
+            "name": "Minor (Dorian)",
+            "scalenotes": [
+                0,
+                2,
+                3,
+                5,
+                7,
+                9,
+                10
+            ]
+        },
+        {
+            "key": "C",
+            "name": "Minor Aeolian",
+            "scalenotes": [
+                0,
+                2,
+                4,
+                5,
+                7,
+                8,
+                10
+            ]
+        }
+    ]
+}
