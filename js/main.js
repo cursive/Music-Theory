@@ -5,6 +5,7 @@ $(function () {
     createTonesBlock();
     createScalesBlock();
     createChordsBlock();
+    createProgressionsBlock();
     $(".toggleBlacks").click(function () {
         toggleBlacks()
     });
@@ -77,6 +78,7 @@ function createChordsBlock() {
     });
     for (var i = 0; i < 4; i++) {
         $(".chords .rows .row:nth-of-type(" + (i + 1) + ") h3").text(dchords[i].name)
+        $(".chords .rows .row:nth-of-type(" + (i + 1) + ") .info").addClass(dchords[i].name)
         createNotes(".chords .row:nth-of-type(" + (i + 1) + ")", chordNotes[i]);
     }
     $(".chords ul li").click(function () {
@@ -88,22 +90,23 @@ function createChordsBlock() {
 
 function createProgressionsBlock() {
 
-    var c = $(".chords .row")
-    for (var i = 0; i < dalphabet.progressions.length - 1; i++) {
-        c.clone().appendTo(".chords .rows");
+    let c = $(".progressions .row")
+    let progressionkey = 0
+    let romans = ["i", "ii", "iii", "iv", "v", "vi", "vii"];
+
+    for (var i = 0; i < dprogressions[0].details.pattern.length - 1; i++) {
+        c.clone().appendTo(".progressions .rows");
     }
     $(".chords .info").click(function () {
         playRow($(this).parent(), 0.5, 0);
     });
-    for (var i = 0; i < 4; i++) {
-        $(".chords .rows .row:nth-of-type(" + (i + 1) + ") h3").text(dchords[i].name)
-        createNotes(".chords .row:nth-of-type(" + (i + 1) + ")", chordNotes[i]);
+
+    for (var i = 0; i < dprogressions[progressionkey].details.pattern.length; i++) {
+        //dprogressions[progressionkey].details.pattern[i]
+        $(".progressions .rows .row:nth-of-type(" + (i + 1) + ") h3").text(romans[i])
+        createNotes(".progressions .row:nth-of-type(" + (i + 1) + ")", progressionNotes[i]);
     }
-    $(".chords ul li").click(function () {
-        $(".chords ul .active").removeClass("active");
-        $(this).addClass("active");
-        setActive();
-    });
+
 }
 
 /**
@@ -114,6 +117,7 @@ function createProgressionsBlock() {
 
 
 function createNotes(parent, arr) {
+    //console.log(arr)
     for (var i = 0; i < 24; i++) {
         $(".notes", parent).append('<div class="note" data-midinote="' + dmidinotes[i] + '"><div class="letter">empty</div></div>')
         arr.push($(".notes .note:last-child", parent))
@@ -174,6 +178,7 @@ function setActive() {
     $(".scales .rows .row:nth-of-type(" + (activeScaleRow + 1) + ") .note:nth-child(" + (n + 1) + ")").addClass("active")
     showLegalScaleNotes();
     showLegalChordsNotes();
+    showLegalProgressionNotes();
 
 }
 
@@ -189,6 +194,45 @@ function showLegalChordsNotes() {
             $(".chords .rows .row:nth-of-type(" + (i + 1) + ") .note:nth-child(" + (n + inversion[j]) + ")").addClass("legal")
         }
     }
+}
+
+
+function showLegalProgressionNotes() {
+    $(".progressions .note").removeClass("legal")
+    let inversion = dchordinversions[$(".chords .variants li.active").index()].details.pattern;
+    let progressionkey = 0
+    let activeScaleRow = $(".scales .note.active").parent().parent().parent().index();
+    for (var i = 0; i < dprogressions[progressionkey].details.pattern.length; i++) {
+        let n = $(".scales .note.active").index() + 1
+        n += dscales[activeScaleRow].details.positions[i]
+        for (var j = 0; j < dchords[0].details.pattern.length; j++) {
+            p = dprogressions[progressionkey].details.pattern[i]
+            n += dchords[p].details.pattern[j]
+            $(".progressions .rows .row:nth-of-type(" + (i + 1) + ") .note:nth-child(" + (n + inversion[j]) + ")").addClass("legal")
+        }
+    }
+    let romans = ["i", "ii", "iii", "iv", "v", "vi", "vii"];
+
+    $(".progressions .info").removeClass("minor")
+    $(".progressions .info").removeClass("major")
+    $(".progressions .info").removeClass("augmented")
+    $(".progressions .info").removeClass("diminished")
+    for (var i = 0; i < dprogressions[progressionkey].details.pattern.length; i++) {
+        let title = romans[i];
+        switch (dprogressions[progressionkey].details.pattern[i]) {
+            case 0:
+                title = title.toUpperCase();
+                break;
+            case 2:
+                title += "º"
+                break;
+            default:
+                title = title;
+        }
+        $(".progressions .rows .row:nth-of-type(" + (i + 1) + ") h3").text(title)
+        $(".progressions .rows .row:nth-of-type(" + (i + 1) + ") .info").addClass(dchords[dprogressions[progressionkey].details.pattern[i]].name)
+    }
+
 }
 
 

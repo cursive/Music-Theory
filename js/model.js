@@ -3,6 +3,7 @@
  */
 
 var tonesNotes = [];
+var progressionNotes = [[], [], [], [], [], [], [], [], []];
 var chordNotes = [[], [], [], []];
 var scaleNotes = [[], [], [], []];
 
@@ -21,14 +22,14 @@ var dscales = [
 ]
 
 var dchords = [
-    { "name": "Augemented", "details": { "pattern": [0, 4, 4] } },
-    { "name": "Major", "details": { "pattern": [0, 4, 3] } },
-    { "name": "Minor", "details": { "pattern": [0, 3, 4] } },
-    { "name": "Diminished", "details": { "pattern": [0, 3, 3] } },
+    { "name": "major", "details": { "pattern": [0, 4, 3] } },
+    { "name": "minor", "details": { "pattern": [0, 3, 4] } },
+    { "name": "diminished", "details": { "pattern": [0, 3, 3] } },
+    { "name": "augemented", "details": { "pattern": [0, 4, 4] } }
 ]
 
 
-var dchordinversionss = [
+var dchordinversions = [
     { "name": "Default", "details": { "pattern": [0, 0, 0] } },
     { "name": "First Inversion", "details": { "pattern": [12, 0, 0] } },
     { "name": "Second Inversion", "details": { "pattern": [12, 12, 0] } },
@@ -45,7 +46,7 @@ var dmodes = [
 ]
 
 
-var progressions = [
-    { "name": "Major", "details": { "pattern": [1, 2, 2, 1, 1, 2, 3] } },
-    { "name": "Major", "details": { "pattern": [2, 3, 1, 2, 2, 3, 3] } }
+var dprogressions = [
+    { "name": "Major", "details": { "pattern": [0, 1, 1, 0, 0, 1, 2] } },
+    { "name": "minor", "details": { "pattern": [1, 2, 0, 1, 1, 2, 2] } }
 ]
