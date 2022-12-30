@@ -17,5 +17,8 @@
     "eslint-plugin-import": "^2.14.0",
     "htmlhint": "^0.10.1",
     "stylelint": "^13.8.0"
+  },
+  "dependencies": {
+    "tone": "^14.7.77"
   }
 }
