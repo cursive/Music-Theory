@@ -32,7 +32,7 @@ var dchords = [
 var dchordinversions = [
     { "name": "Default", "details": { "pattern": [0, 0, 0] } },
     { "name": "First Inversion", "details": { "pattern": [12, 0, 0] } },
-    { "name": "Second Inversion", "details": { "pattern": [12, 12, 0] } },
+    { "name": "Second Inversion", "details": { "pattern": [12, 12, 0] } }
 ]
 
 var dmodes = [
