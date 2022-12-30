@@ -17,7 +17,7 @@
 
 
   <script src="js/libs/jquery-3.6.3.min.js"></script>
-  <script src="https://unpkg.com/tone"></script>
+  <script src="js/libs/Tone.js"></script>
   <!-- <script src="js/libs/dat.gui.js"></script> -->
   <script src="js/libs/webmidi.iife.js"></script>
   <script src="js/utils.js"></script>
@@ -30,6 +30,7 @@
 </head>
 
 <body>
+  <div class="octave"></div>
   <button class="toggleBlacks">Toggle Black</button>
   <button class="toggleLetters">Toggle Letters</button>
   <button class="compact">Compact</button>
@@ -50,7 +51,7 @@
 
     <div class="block scales">
       <h2>Scales related to X</h2>
-      <ul class="variants"></ul>
+      <ul class="variants modes"></ul>
       <div class="rows">
         <div class="row">
           <div class="container">
@@ -65,26 +66,11 @@
       </div>
     </div>
 
-    <!-- <div class="block modes">
-      <h2>Modes related to X</h2>
-      <ul class="variants"></ul>
-      <div class="rows">
-        <div class="row">
-          <div class="container">
-            <div class="info">
-              <h3>Title</h3>
-              <p>E</p>
-            </div>
-            <div class="notes">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div> -->
+
 
     <div class="block chords">
       <h2>Chords related to Y</h2>
-      <ul class="variants"></ul>
+      <ul class="variants chordtypes"></ul>
       <div class="rows">
         <div class="row">
           <div class="container">
@@ -100,7 +86,23 @@
     </div>
   </div>
 
-
+  <div class="block progressions">
+    <h2>Progressions related to Y</h2>
+    <ul class="variants progressiontypes"></ul>
+    <div class="rows">
+      <div class="row">
+        <div class="container">
+          <div class="info">
+            <h3>Title</h3>
+            <p>E</p>
+          </div>
+          <div class="notes">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
 
 
 </body>

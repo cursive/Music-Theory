@@ -2,6 +2,16 @@
   font-family: "Helvetica", "Arial", sans-serif;
 }
 
+.octave {
+  position: absolute;
+  width: 500px;
+  height: 2000px;
+  top: 0;
+  left: 760px;
+  background-color: rgba(0, 0, 0, 0.02);
+  z-index: -1;
+}
+
 .blocks {
   display: flex;
   flex-direction: column;
@@ -32,7 +42,10 @@
   color: #555555;
 }
 .note.legal {
-  border: 2px solid #14BF96;
+  border: 4px solid #14BF96;
+}
+.note.legal.active {
+  background-color: #b5eade;
 }
 .note.black {
   background: #4D4D4D;
@@ -42,7 +55,7 @@
   background-color: #F2F2F2;
 }
 .note.active {
-  background: #14BF96;
+  background-color: #b5eade;
   color: #555555;
 }
 .note.active .letter.invisible {

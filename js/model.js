@@ -16,8 +16,8 @@ var dblacknotes = [1, 3, 6, 8, 10, 13, 15, 18, 20, 22]
 var dscaleNotes = [0, 2, 4, 5, 7, 9, 11]
 
 var dscales = [
-    { "name": "Major", "details": { "pattern": [2, 2, 1, 2, 2, 2, 1], "positions": [0, 2, 4, 5, 7, 9, 11, 12] } },
-    { "name": "Minor", "details": { "pattern": [2, 1, 2, 2, 1, 2, 1], "positions": [0, 2, 3, 5, 7, 8, 10, 11] } },
+    { "name": "Major", "details": { "pattern": [2, 2, 1, 2, 2, 2, 1], "positions": [0, 2, 4, 5, 7, 9, 11, 12, 14, 16, 17, 19, 21, 23, 24] } },
+    { "name": "Minor", "details": { "pattern": [2, 1, 2, 2, 1, 2, 1], "positions": [0, 2, 3, 5, 7, 8, 10, 11, 12, 14, 15, 17, 19, 20, 22, 23, 24] } },
 ]
 
 var dchords = [
@@ -42,4 +42,10 @@ var dmodes = [
     { "name": "Mixolydian", "details": { "pattern": [2, 2, 1, 2, 2, 1, 2] } },
     { "name": "Aeolian", "details": { "pattern": [2, 1, 2, 2, 1, 2, 2] } },
     { "name": "Locrian", "details": { "pattern": [1, 2, 2, 1, 2, 2, 2] } }
+]
+
+
+var progressions = [
+    { "name": "Major", "details": { "pattern": [1, 2, 2, 1, 1, 2, 3] } },
+    { "name": "Major", "details": { "pattern": [2, 3, 1, 2, 2, 3, 3] } }
 ]

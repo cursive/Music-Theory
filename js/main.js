@@ -27,8 +27,7 @@ function createTonesBlock() {
     $(".tones .note").click(function () {
         $(".tones .active").removeClass("active");
         $(this).addClass("active")
-        showLegalScaleNotes()
-        $('.scales .note:nth-child(' + ($(this).index() + 1) + ')').trigger('click');
+        setActive();
     });
 
 }
@@ -51,14 +50,16 @@ function createScalesBlock() {
     $(".scales .note").click(function () {
         $(".scales .notes .active").removeClass("active");
         $(this).addClass("active")
-        showLegalChordsNotes()
+        $(".tones .notes .active").removeClass("active");
+        $(".tones .note:nth-of-type(" + ($(this).index() + 1) + ")").addClass("active")
+        setActive();
     });
     createVariants(".scales", dmodes)
     $(".scales ul li").click(function () {
         $(".scales ul .active").removeClass("active");
         $(".scales .notes .active").removeClass("active");
         $(this).addClass("active")
-        showLegalScaleNotes();
+        setActive();
     });
 }
 
@@ -66,7 +67,7 @@ function createScalesBlock() {
 
 
 function createChordsBlock() {
-    createVariants(".chords", dchordinversionss);
+    createVariants(".chords", dchordinversions);
     var c = $(".chords .row")
     for (var i = 0; i < 3; i++) {
         c.clone().appendTo(".chords .rows");
@@ -80,8 +81,28 @@ function createChordsBlock() {
     }
     $(".chords ul li").click(function () {
         $(".chords ul .active").removeClass("active");
-        $(this).addClass("active")
-        showLegalChordsNotes();
+        $(this).addClass("active");
+        setActive();
+    });
+}
+
+function createProgressionsBlock() {
+
+    var c = $(".chords .row")
+    for (var i = 0; i < dalphabet.progressions.length - 1; i++) {
+        c.clone().appendTo(".chords .rows");
+    }
+    $(".chords .info").click(function () {
+        playRow($(this).parent(), 0.5, 0);
+    });
+    for (var i = 0; i < 4; i++) {
+        $(".chords .rows .row:nth-of-type(" + (i + 1) + ") h3").text(dchords[i].name)
+        createNotes(".chords .row:nth-of-type(" + (i + 1) + ")", chordNotes[i]);
+    }
+    $(".chords ul li").click(function () {
+        $(".chords ul .active").removeClass("active");
+        $(this).addClass("active");
+        setActive();
     });
 }
 
@@ -122,34 +143,50 @@ function createVariants(parent, source) {
  */
 
 
-
-
+//This is messy as we have to use the root note and the mode to offset which notes in teh scale to display
 function showLegalScaleNotes() {
     $(".scales .note").removeClass("legal")
+    let root = $(".tones .note.active").index();
     for (var i = 0; i < dscales.length; i++) {
-        var mode = 1 + dscales[i].details.positions[$(".scales .variants li.active").index()];
+        let mode = $(".scales .variants li.active").index();
         for (var j = 0; j < dscales[i].details.pattern.length; j++) {
-            $(".scales .rows .row:nth-of-type(" + (i + 1) + ") .note:nth-child(" + (mode + dscales[i].details.positions[j]) + ")").addClass("legal")
+            let n = dscales[i].details.positions[(j + mode)]
+            n += root;
+            $(".scales .rows .row:nth-of-type(" + (i + 1) + ") .note:nth-child(" + (n + 1) + ")").addClass("legal")
         }
     }
 
 }
 
 
+function setActive() {
+    let root = $(".tones .notes .active").index();
+    let scale = $(".scales .notes .active").index();
+    let mode = $(".scales .variants .active").index();
+    let activeScaleRow = 0;
+    if ($(".scales .note").hasClass("active")) {
+        console.log("has active", $(".scales .note.active").parent().parent().parent().index());
+        activeScaleRow = $(".scales .note.active").parent().parent().parent().index();
+        $(".scales .note.active").removeClass("active")
+
+    }
+    let n = dscales[activeScaleRow].details.positions[mode] + root
+    $(".scales .rows .row:nth-of-type(" + (activeScaleRow + 1) + ") .note:nth-child(" + (n + 1) + ")").addClass("active")
+    showLegalScaleNotes();
+    showLegalChordsNotes();
+
+}
+
+
 
 function showLegalChordsNotes() {
-    var inversion = dchordinversionss[$(".chords .variants li.active").index()].details.pattern;
+    let inversion = dchordinversions[$(".chords .variants li.active").index()].details.pattern;
     $(".chords .note").removeClass("legal")
-
     for (var i = 0; i < dchords.length; i++) {
-        console.log("chord row")
         var n = $(".scales .note.active").index() + 1
-
         for (var j = 0; j < 3; j++) {
-            console.log("--", n)
             n += dchords[i].details.pattern[j]
             $(".chords .rows .row:nth-of-type(" + (i + 1) + ") .note:nth-child(" + (n + inversion[j]) + ")").addClass("legal")
-
         }
     }
 }
