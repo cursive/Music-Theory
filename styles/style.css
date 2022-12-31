@@ -2,6 +2,15 @@
   font-family: "Helvetica", "Arial", sans-serif;
 }
 
+p.description {
+  color: #677389;
+  width: 720px;
+}
+
+.ui {
+  display: none;
+}
+
 .octave {
   position: absolute;
   width: 500px;
@@ -16,6 +25,7 @@
   display: flex;
   flex-direction: column;
   width: 2000px;
+  padding-left: 72px;
 }
 .blocks .block {
   display: flex;
@@ -73,13 +83,6 @@
 }
 .note .letter.invisible {
   opacity: 0;
-}
-
-h2 {
-  padding: 0;
-  margin: 0;
-  margin-bottom: 10px;
-  margin-top: 20px;
 }
 
 .variants {

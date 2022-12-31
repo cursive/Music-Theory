@@ -17,6 +17,7 @@
 
 
   <script src="js/libs/jquery-3.6.3.min.js"></script>
+  <script src="js/libs/bootstrap.bundle.min.js"></script>
   <script src="js/libs/Tone.js"></script>
   <!-- <script src="js/libs/dat.gui.js"></script> -->
   <script src="js/libs/webmidi.iife.js"></script>
@@ -25,18 +26,26 @@
   <script src="js/ui.js"></script>
   <script src="js/model.js"></script>
   <script src="js/synth.js"></script>
-
+  <link rel="stylesheet" type="text/css" href="styles/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="styles/style.css">
 </head>
 
 <body>
   <div class="octave"></div>
-  <button class="toggleBlacks">Toggle Black</button>
-  <button class="toggleLetters">Toggle Letters</button>
-  <button class="compact">Compact</button>
+  <div class="ui">
+    <button class="toggleBlacks">Toggle Black</button>
+    <button class="toggleLetters">Toggle Letters</button>
+    <button class="compact">Compact</button>
+  </div>
   <div class="blocks">
+    <h1>Music Theroy</h1>
     <div class="block tones">
       <h2>Tones</h2>
+      <p class="description">A musical tone is characterized by its duration, pitch, intensity (or loudness), and
+        timbre (or quality). The notes used
+        in music can be more complex than musical tones, as they may include aperiodic aspects, such as attack
+        transients,
+        vibrato, and envelope modulation.</p>
       <div class="row">
         <div class="container">
           <div class="info">
