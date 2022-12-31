@@ -115,7 +115,9 @@ p.description {
     &.legal {
         border: 4px solid #14BF96;
 
-        &.active {}
+        &.active {
+            border: 4px solid#1865F2;
+        }
     }
 
     &.black {
@@ -134,7 +136,7 @@ p.description {
 
         .letter {
             font-weight: bold;
-            text-decoration: underline;
+
 
             &.invisible {
                 opacity: 1;

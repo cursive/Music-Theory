@@ -95,6 +95,9 @@ p.description {
 .note.legal {
   border: 4px solid #14BF96;
 }
+.note.legal.active {
+  border: 4px solid #1865F2;
+}
 .note.black {
   background: #4D4D4D;
   color: #aaaaaa;
@@ -108,7 +111,6 @@ p.description {
 }
 .note.active .letter {
   font-weight: bold;
-  text-decoration: underline;
 }
 .note.active .letter.invisible {
   opacity: 1;
