@@ -132,15 +132,18 @@ p.description {
     &.active {
         background-color: #EDF3FE;
         color: #1865F2;
-
+        border: 4px solid#1865F2;
 
         .letter {
             font-weight: bold;
 
-
             &.invisible {
                 opacity: 1;
             }
+        }
+
+        &.black {
+            //background-color: #d6dce8;
         }
     }
 

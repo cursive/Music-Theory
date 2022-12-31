@@ -45,7 +45,7 @@ function createScalesBlock() {
         playRow($(this).parent(), 0.5, 0.5);
     });
     for (var i = 0; i < dscales.length; i++) {
-        $(".scales .rows .row:nth-of-type(" + (i + 1) + ") h3").text(dscales[i].name)
+        $(".scales .rows .row:nth-of-type(" + (i + 1) + ") h3").text(dscales[i].name + " scale")
         createNotes(".scales .row:nth-of-type(" + (i + 1) + ")", scaleNotes[i]);
     }
     $(".scales .note").click(function () {
@@ -161,6 +161,12 @@ function showLegalScaleNotes() {
             $(".scales .rows .row:nth-of-type(" + (i + 1) + ") .note:nth-child(" + (n + 1) + ")").addClass("legal")
         }
     }
+    $(".scales .row:nth-of-type(1) .info h3").text($(".tones .note.active .letter").text() + " Major")
+    $(".scales .row:nth-of-type(2) .info h3").text($(".tones .note.active .letter").text() + " Minor")
+    // $(".chords .row:nth-of-type(1) .info h3").text($(".tones .note.active .letter").text() + " Major")
+    // $(".chords .row:nth-of-type(2) .info h3").text($(".tones .note.active .letter").text() + " Minor")
+    // $(".chords .row:nth-of-type(3) .info h3").text($(".tones .note.active .letter").text() + " Dim.")
+    // $(".chords .row:nth-of-type(4) .info h3").text($(".tones .note.active .letter").text() + " Augm.")
 
 }
 

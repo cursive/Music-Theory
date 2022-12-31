@@ -108,6 +108,7 @@ p.description {
 .note.active {
   background-color: #EDF3FE;
   color: #1865F2;
+  border: 4px solid #1865F2;
 }
 .note.active .letter {
   font-weight: bold;
