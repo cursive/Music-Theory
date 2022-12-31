@@ -26,26 +26,30 @@
   <script src="js/ui.js"></script>
   <script src="js/model.js"></script>
   <script src="js/synth.js"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="styles/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="styles/style.css">
 </head>
 
-<body>
+<body class="compact">
+
+  <!-- <h1>I am H1</h1>
+  <h2>I am H2</h2>
+  <h3>I am H3</h3>
+  <p class="description">I am a apragraph</p> -->
   <div class="octave"></div>
   <div class="ui">
     <button class="toggleBlacks">Toggle Black</button>
     <button class="toggleLetters">Toggle Letters</button>
-    <button class="compact">Compact</button>
+    <button class="btcompact">Compact</button>
   </div>
   <div class="blocks">
     <h1>Music Theroy</h1>
+    <hr>
     <div class="block tones">
-      <h2>Tones</h2>
-      <p class="description">A musical tone is characterized by its duration, pitch, intensity (or loudness), and
-        timbre (or quality). The notes used
-        in music can be more complex than musical tones, as they may include aperiodic aspects, such as attack
-        transients,
-        vibrato, and envelope modulation.</p>
+      <h2>01. Tones</h2>
+      <div class="tip">Pick a note see it's related scales</div>
+      <p class="description">There are </p>
       <div class="row">
         <div class="container">
           <div class="info">
@@ -57,45 +61,72 @@
         </div>
       </div>
     </div>
-
+    <hr>
     <div class="block scales">
-      <h2>Scales related to X</h2>
-      <ul class="variants modes"></ul>
+      <h2>02. Related scales</h2>
+      <div class="tip">Pick a note from a scale/mode to see the related chord and chord progression</div>
+      <p class="description">Scales are patterns of notes that sound good together. Startign with a given tone, called
+        the root tone, they follow a specifc pattern of interval from one tone to the next. </p>
+      <!-- <div class="tip">Pick a tone in the tones section to see it's scale.</div> -->
       <div class="rows">
         <div class="row">
           <div class="container">
             <div class="info">
               <h3>Title</h3>
-              <p>E</p>
+              <span class="material-icons md-inactive">play_arrow</span>
             </div>
             <div class="notes">
             </div>
           </div>
         </div>
       </div>
+      <h6>Scale modes</h6>
+      <p class="description">Modes are varaitantions on scales that alter their mood, in reality all they do is offset
+        the starting note of each scale. </p>
+      <!-- <div class="tip">Play around with the moods below to see for yourself.</div> -->
+      <ul class="variants modes"></ul>
     </div>
 
-
+    <hr>
 
     <div class="block chords">
-      <h2>Chords related to Y</h2>
-      <ul class="variants chordtypes"></ul>
+      <h2>03a. Related chords</h2>
+
+      <div class="tip">Optionally set an inversion</div>
+      <p class="description">
+        Each note in a scale can be decorated with two extra notes and played together as a chord.
+        For each chord there are 4 patterns which are used to pick the decorating notes:
+        <em>Major</em>, <em>Minor</em>, <em>Diminished</em> and <em>Augmented</em>.
+      </p>
+
+
       <div class="rows">
         <div class="row">
           <div class="container">
             <div class="info">
               <h3>Title</h3>
+              <span class="material-icons md-inactive">play_arrow</span>
               <p>E</p>
+
             </div>
             <div class="notes">
             </div>
           </div>
         </div>
       </div>
-    </div>
+      <h6>Chord inversions</h6>
 
+      <p class="description">
+        Inversions move indovidual chord notes up an octave to give them a different sound
+      </p>
+      <ul class="variants chordtypes"></ul>
+    </div>
+    <hr>
     <div class="block progressions">
-      <h2>Progressions related to Y</h2>
+
+      <h2>03b. Related progression</h2>
+
+      <div class="tip">Progression is derived from the note syou select in the scale</div>
       <ul class="variants progressiontypes"></ul>
       <div class="rows">
         <div class="row">

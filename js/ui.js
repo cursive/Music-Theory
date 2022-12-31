@@ -17,6 +17,7 @@ function toggleBlacks() {
 }
 
 function toggleLetters() {
+
     showLetters = !showLetters;
     if (showLetters) {
         $(".letter").removeClass("invisible")
@@ -25,6 +26,7 @@ function toggleLetters() {
     }
 }
 function toggleCompact() {
+    alert(1)
     compact = !compact;
     if (compact) {
         $("body").addClass("compact")

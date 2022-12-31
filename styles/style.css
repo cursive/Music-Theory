@@ -2,23 +2,62 @@
   font-family: "Helvetica", "Arial", sans-serif;
 }
 
+h1,
+h2,
+h3,
+h5,
+h6,
+.tip,
+.description,
+.variants {
+  margin-left: 96px;
+}
+
+h2 {
+  margin-top: 36px;
+}
+
+h6 {
+  margin-top: 12px;
+  font-weight: normal;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #777777;
+}
+
+.tip {
+  background-color: #EDF3FE;
+  font-size: 14px;
+  border-radius: 4px;
+  border-left: 4px solid #1865F2;
+  padding: 4px;
+  padding-left: 8px;
+  margin-bottom: 12px;
+  width: 650px;
+  color: #21242C;
+  margin-bottom: 18px;
+}
+
 p.description {
+  font-size: 16px;
   color: #677389;
-  width: 720px;
+  width: 630px;
 }
 
 .ui {
+  opacity: 1;
   display: none;
 }
 
 .octave {
   position: absolute;
-  width: 500px;
+  width: 1000px;
   height: 2000px;
   top: 0;
-  left: 760px;
+  left: 823px;
   background-color: rgba(0, 0, 0, 0.02);
   z-index: -1;
+  display: none;
 }
 
 .blocks {
@@ -26,6 +65,8 @@ p.description {
   flex-direction: column;
   width: 2000px;
   padding-left: 72px;
+  margin-bottom: 72px;
+  padding-top: 36px;
 }
 .blocks .block {
   display: flex;
@@ -54,9 +95,6 @@ p.description {
 .note.legal {
   border: 4px solid #14BF96;
 }
-.note.legal.active {
-  background-color: #b5eade;
-}
 .note.black {
   background: #4D4D4D;
   color: #aaaaaa;
@@ -65,17 +103,18 @@ p.description {
   background-color: #F2F2F2;
 }
 .note.active {
-  background-color: #b5eade;
-  color: #555555;
+  background-color: #EDF3FE;
+  color: #1865F2;
+}
+.note.active .letter {
+  font-weight: bold;
+  text-decoration: underline;
 }
 .note.active .letter.invisible {
   opacity: 1;
 }
 .note.playing {
   box-shadow: 0px 0px 5px 0px rgb(255, 0, 0);
-}
-.note:hover {
-  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.42);
 }
 .note .letter {
   font-size: 10px;
@@ -85,20 +124,33 @@ p.description {
   opacity: 0;
 }
 
+.tones .note:hover,
+.scales .note:hover {
+  box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.22);
+}
+
 .variants {
   display: flex;
   gap: 10px;
   padding: 0;
-  margin: 0;
   margin-bottom: 10px;
 }
 .variants li {
+  border-radius: 4px;
   padding: 0;
   margin: 0;
   list-style: none;
 }
-.variants li.active {
-  color: #14BF96;
+.variants li.active a {
+  color: black;
+}
+.variants li a {
+  text-decoration: none;
+  color: #1865F2;
+}
+
+.chords .h3 {
+  text-transform: capitalize;
 }
 
 .info {
@@ -106,11 +158,15 @@ p.description {
   height: 45px;
   background-color: #C9C9C9;
   border-radius: 5px;
+  padding: 5px;
+  box-sizing: border-box;
 }
 .info h3 {
   font-size: 12px;
   font-weight: normal;
-  margin: 5px;
+  margin: 0;
+  margin-left: 4px;
+  padding: 0;
 }
 .info p {
   font-size: 12px;
@@ -128,7 +184,33 @@ p.description {
 .info.augemnted {
   background-color: #C9C9C9;
 }
+.info:hover {
+  box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.22);
+}
 
-.compact h2 {
+.description em {
+  font-style: normal;
+}
+.description em:nth-child(1) {
+  color: #e2c379;
+}
+.description em:nth-child(2) {
+  color: #81C6CB;
+}
+.description em:nth-child(3) {
+  color: #d3a19f;
+}
+.description em:nth-child(4) {
+  color: #767676;
+}
+
+.compact .tip {
+  opacity: 1;
+}
+.compact p.description {
   display: none;
+}
+
+.material-icons {
+  font-size: 18px;
 }/*# sourceMappingURL=style.css.map */

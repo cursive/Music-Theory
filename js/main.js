@@ -12,7 +12,7 @@ $(function () {
     $(".toggleLetters").click(function () {
         toggleLetters()
     });
-    $(".compact").click(function () {
+    $(".btcompact").click(function () {
         toggleCompact()
     });
 
@@ -28,7 +28,7 @@ function createTonesBlock() {
     $(".tones .note").click(function () {
         $(".tones .active").removeClass("active");
         $(this).addClass("active")
-        setActive();
+        showLegalNotes();
     });
 
 }
@@ -51,16 +51,17 @@ function createScalesBlock() {
     $(".scales .note").click(function () {
         $(".scales .notes .active").removeClass("active");
         $(this).addClass("active")
-        $(".tones .notes .active").removeClass("active");
-        $(".tones .note:nth-of-type(" + ($(this).index() + 1) + ")").addClass("active")
-        setActive();
+        showLegalNotes();
     });
     createVariants(".scales", dmodes)
-    $(".scales ul li").click(function () {
+    $(".scales ul li").click(function (e) {
+        e.preventDefault();
         $(".scales ul .active").removeClass("active");
         $(".scales .notes .active").removeClass("active");
-        $(this).addClass("active")
-        setActive();
+        $(this).addClass("active");
+        $(".chords .note").removeClass("legal");
+        $(".progressions .note").removeClass("legal");
+        showLegalNotes();
     });
 }
 
@@ -81,10 +82,11 @@ function createChordsBlock() {
         $(".chords .rows .row:nth-of-type(" + (i + 1) + ") .info").addClass(dchords[i].name)
         createNotes(".chords .row:nth-of-type(" + (i + 1) + ")", chordNotes[i]);
     }
-    $(".chords ul li").click(function () {
+    $(".chords ul li").click(function (e) {
+        e.preventDefault();
         $(".chords ul .active").removeClass("active");
         $(this).addClass("active");
-        setActive();
+        showLegalNotes();
     });
 }
 
@@ -133,7 +135,7 @@ function createNotes(parent, arr) {
 
 function createVariants(parent, source) {
     for (var i = 0; i < source.length; i++) {
-        $("ul", parent).append('<li class="variant">' + source[i].name + '</li>')
+        $("ul", parent).append('<li class="variant"><a href="#">' + source[i].name + '</a></li>')
         $("ul li:first-child", parent).addClass("active")
     }
 }
@@ -163,22 +165,12 @@ function showLegalScaleNotes() {
 }
 
 
-function setActive() {
-    let root = $(".tones .notes .active").index();
-    let scale = $(".scales .notes .active").index();
-    let mode = $(".scales .variants .active").index();
-    let activeScaleRow = 0;
-    if ($(".scales .note").hasClass("active")) {
-        console.log("has active", $(".scales .note.active").parent().parent().parent().index());
-        activeScaleRow = $(".scales .note.active").parent().parent().parent().index();
-        $(".scales .note.active").removeClass("active")
-
-    }
-    let n = dscales[activeScaleRow].details.positions[mode] + root
-    $(".scales .rows .row:nth-of-type(" + (activeScaleRow + 1) + ") .note:nth-child(" + (n + 1) + ")").addClass("active")
+function showLegalNotes() {
     showLegalScaleNotes();
-    showLegalChordsNotes();
-    showLegalProgressionNotes();
+    if ($(".scales .note").hasClass("active")) {
+        showLegalChordsNotes();
+        showLegalProgressionNotes();
+    }
 
 }
 
@@ -198,6 +190,7 @@ function showLegalChordsNotes() {
 
 
 function showLegalProgressionNotes() {
+    console.log("showegalprogre")
     $(".progressions .note").removeClass("legal")
     let inversion = dchordinversions[$(".chords .variants li.active").index()].details.pattern;
     let progressionkey = 0
