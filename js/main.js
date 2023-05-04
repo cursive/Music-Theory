@@ -1,5 +1,5 @@
 
-
+//setup the UI each section is called a block
 $(function () {
     console.log("init")
     createTonesBlock();
@@ -20,7 +20,7 @@ $(function () {
 });
 
 /**
- * Create the notes, scales and chord blocks
+ * Create the notes, scales, chord  and chord progression blocks/sections
  */
 
 function createTonesBlock() {
@@ -111,12 +111,9 @@ function createProgressionsBlock() {
 
 }
 
-/**
- * 
- *The UI inside the blocks
- */
 
 
+//draw the notes on the keyboard for any section
 
 function createNotes(parent, arr) {
     //console.log(arr)
@@ -133,6 +130,7 @@ function createNotes(parent, arr) {
     }
 }
 
+//draw the variants for the scale modes and chord inversions picker
 function createVariants(parent, source) {
     for (var i = 0; i < source.length; i++) {
         $("ul", parent).append('<li class="variant"><a href="#">' + source[i].name + '</a></li>')
@@ -146,10 +144,24 @@ function createVariants(parent, source) {
 
 /**
  * Behaviors and interactions
+ * 
+ * This part of the code is all about highlghting the notes on the keyboard for each section when a user clicks a not in a section above it
+ * We refer to the data in model.js to know which notes to highlight
  */
 
 
-//This is messy as we have to use the root note and the mode to offset which notes in teh scale to display
+//Called whenver a user clicks on a note, and is used to run down each section and highlight the releated notes
+function showLegalNotes() {
+    showLegalScaleNotes();
+    if ($(".scales .note").hasClass("active")) {
+        showLegalChordsNotes();
+        showLegalProgressionNotes();
+    }
+
+}
+
+//Highlight the related Scale notes on keyboard
+//For scales we also have to use the modes to offset the root note
 function showLegalScaleNotes() {
     $(".scales .note").removeClass("legal")
     let root = $(".tones .note.active").index();
@@ -163,25 +175,13 @@ function showLegalScaleNotes() {
     }
     $(".scales .row:nth-of-type(1) .info h3").text($(".tones .note.active .letter").text() + " Major")
     $(".scales .row:nth-of-type(2) .info h3").text($(".tones .note.active .letter").text() + " Minor")
-    // $(".chords .row:nth-of-type(1) .info h3").text($(".tones .note.active .letter").text() + " Major")
-    // $(".chords .row:nth-of-type(2) .info h3").text($(".tones .note.active .letter").text() + " Minor")
-    // $(".chords .row:nth-of-type(3) .info h3").text($(".tones .note.active .letter").text() + " Dim.")
-    // $(".chords .row:nth-of-type(4) .info h3").text($(".tones .note.active .letter").text() + " Augm.")
-
-}
-
-
-function showLegalNotes() {
-    showLegalScaleNotes();
-    if ($(".scales .note").hasClass("active")) {
-        showLegalChordsNotes();
-        showLegalProgressionNotes();
-    }
 
 }
 
 
 
+
+//highlight the related notes in the Chords section when you pick a note in the Scales section
 function showLegalChordsNotes() {
     let inversion = dchordinversions[$(".chords .variants li.active").index()].details.pattern;
     $(".chords .note").removeClass("legal")
@@ -194,7 +194,7 @@ function showLegalChordsNotes() {
     }
 }
 
-
+//highlight the related notes in the Progressions section when you pick a note in the Scales section
 function showLegalProgressionNotes() {
     console.log("showegalprogre")
     $(".progressions .note").removeClass("legal")
@@ -234,7 +234,7 @@ function showLegalProgressionNotes() {
 
 }
 
-
+//play the audio and highlight the notes in the Scales section when you click the play button
 function playRow(parent, duration, delay) {
     let notesToPlay = [];
     let notesToHighlight = []
